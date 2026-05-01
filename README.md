@@ -1,6 +1,7 @@
 # Linux-For-DevOps-Notes
 This repository focuses on learning and practising Linux commands
 
+Topics:
 1. How does the Internet work? What are Servers?
 2. What is Linux OS? How to setup a Linux Server?
 3. Linux Basic Commands
@@ -14,7 +15,7 @@ This repository focuses on learning and practising Linux commands
 11. LVM (Logical Volume Manager) in Linux
 
 
-Day 1
+Topic 1
 1. How does the Internet work?
 2. What is the Server? 
 3. Difference between the Web server and the Application server
@@ -24,6 +25,7 @@ Day 1
 7. What is Application support?
 8. What is application maintenance?
 
+Topic 2
 Introduction of Linux
 1. What is Linux? Introduction to Linux OS?
 2. How to install Linux?
