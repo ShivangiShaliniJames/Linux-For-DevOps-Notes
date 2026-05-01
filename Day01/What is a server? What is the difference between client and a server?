@@ -1,0 +1,23 @@
+What is a server? What is the difference between client and a server?
+
+A server is a computer or system that provides data, services, or resources to other computers over a network.
+For example, when you open a website, a server sends the webpage data to your device.
+
+A client is a device or application that requests services or data from a server.
+
+Examples:
+
+Web browser (Chrome, Safari)
+Mobile apps
+Your laptop or phone
+
+Interview:
+A server is a system that provides data or services, while a client is a device or application that requests and consumes those services.
+
+Difference Between Client and Server
+
+Feature	                  Client	              Server
+Role	                    Requests data	        Provides data
+Example	                  Browser, mobile app	  Web server, database server
+Initiates communication	  Yes	                  No (responds to requests)
+Function	                Displays/uses data	  Stores/processes data
