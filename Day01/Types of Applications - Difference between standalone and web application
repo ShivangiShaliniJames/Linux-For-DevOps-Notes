@@ -1,0 +1,30 @@
+A standalone application runs locally on your device and does not require the internet or a browser to function.
+
+Installed directly on your system
+Works offline (in most cases)
+
+Examples:
+
+Microsoft Word
+VLC Media Player
+
+A web application runs on a server and is accessed through a web browser over the internet.
+
+No installation needed
+Requires internet (usually)
+
+Examples:
+
+Gmail
+Google Docs
+
+Interview:
+A standalone application runs locally on a device without needing the internet, while a web application runs on a server and is accessed through a browser over the internet.
+
+Feature	                    Standalone Application	          Web Application
+Runs on	                    Local machine	                    Server (accessed via browser)
+Internet required	          No (mostly)	                      Yes
+Installation	              Required	                        Not required
+Updates	                    Manual	                          Automatic
+Accessibility	              Single device	                    Any device with browser
+
