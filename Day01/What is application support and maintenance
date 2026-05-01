@@ -1,0 +1,32 @@
+Interview:
+Application support and maintenance involve monitoring, troubleshooting, and improving software applications after deployment to ensure they run smoothly, remain secure, and meet evolving user needs.
+
+Application Support (Day-to-Day Operations)
+
+This focuses on keeping the system running without issues:
+
+Resolving user issues (login errors, bugs, access problems)
+Handling tickets and incidents
+Monitoring system performance
+Troubleshooting errors
+Ensuring uptime and availability
+
+Application Maintenance (Long-Term Improvements)
+
+This focuses on enhancing and updating the application:
+
+Fixing bugs permanently
+Updating features or functionality
+Improving performance
+Applying security patches
+Adapting to new business requirements
+
+Types of Maintenance
+Corrective → Fix bugs
+Adaptive → Adjust to new environments (OS, tools)
+Perfective → Improve performance/features
+Preventive → Avoid future issues
+
+Real Example
+User can’t log in → Support (fix immediately)
+App is slow → Maintenance (optimize performance)
