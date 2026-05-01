@@ -1,0 +1,7 @@
+The internet works as a global network of computers connected together. When you enter a website (like google.com), your device sends a request through your internet service provider (ISP) to a system called DNS (Domain Name System), which translates the website name into an IP address. This IP address identifies the server where the website is hosted.
+
+Your request travels across multiple networks using routers, reaches the server, and the server sends back the website data (HTML, images, etc.). Your browser then displays this data as a webpage. All of this happens in milliseconds using standard protocols like HTTP/HTTPS.
+
+Interview:
+
+The internet works by sending requests from a client to a server using IP addresses and protocols like HTTP, with DNS translating domain names into IP addresses, enabling data to be exchanged and displayed as web pages.
