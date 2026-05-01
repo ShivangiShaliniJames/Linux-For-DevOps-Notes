@@ -15,25 +15,25 @@ This repository focuses on learning and practising Linux commands
 
 
 Day 1
-How does the Internet work?
-What is the Server? 
-Difference between the Web server and the Application server
-Type of Applications
-What are Standalone apps?
-What are Web applications?
-What is Application support?
-What is application maintenance?
+1. How does the Internet work?
+2. What is the Server? 
+3. Difference between the Web server and the Application server
+4. Type of Applications
+5. What are Standalone apps?
+6. What are Web applications?
+7. What is Application support?
+8. What is application maintenance?
 
 Introduction of Linux
-What is Linux? Introduction to Linux OS?
-How to install Linux?
-How to download and install Linux(Ubuntu) on a Windows PC?
-Difference between Linux and Windows
-Software remote location tools?
-What is Kernel, Bootloader and Shell?
-Desktop environment
-Linux system architecture
-Information about hardware
-Linux File System
-Difference between Linux and Unix
-States of Processes in Linux
+1. What is Linux? Introduction to Linux OS?
+2. How to install Linux?
+3. How to download and install Linux(Ubuntu) on a Windows PC?
+4. Difference between Linux and Windows
+5. Software remote location tools?
+6. What is Kernel, Bootloader and Shell?
+7. Desktop environment
+8. Linux system architecture
+9. Information about hardware
+10. Linux File System
+11. Difference between Linux and Unix
+12. States of Processes in Linux
