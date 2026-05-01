@@ -1,0 +1,14 @@
+For DevOps and EC2, SSH is the primary tool for Linux instances, AWS Systems Manager is preferred for secure access without opening ports, and RDP is used for Windows servers.
+
+Why is it best?
+Secure (key-based authentication)
+Lightweight & fast
+Works perfectly with automation (scripts, CI/CD)
+Industry standard
+
+
+
+Use Case	                Best Tool
+Linux EC2	                SSH (OpenSSH)
+Secure enterprise access	AWS Systems Manager
+Windows EC2	              RDP
