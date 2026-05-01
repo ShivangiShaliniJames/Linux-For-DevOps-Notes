@@ -1,0 +1,16 @@
+Linux architecture is a layered system designed for stability and security, separating user applications from physical hardware. It consists primarily of the User Space (applications/shell) and Kernel Space (core OS). The monolithic kernel directly manages hardware, memory, and processes, acting as the bridge for all system operations.
+
+
+Core Layers of Linux Architecture
+Hardware Layer: Physical components, including the CPU, RAM, and hard drives.
+Kernel: The heart of the OS, responsible for process management, memory management, file systems, and device drivers. It runs in privileged mode.
+System Call Interface (SCI): A layer that allows user-space applications to request services from the kernel.
+System Libraries (glibc): Provide functions that apps use to make system calls without knowing the complex kernel interface.
+Shell/User Space: The topmost layer where user applications, daemons, and terminal interfaces exist, running with restricted access to hardware for security.
+
+Key Components and Functionality
+Monolithic Kernel: The Linux kernel runs all its core functions—drivers, file system, memory management—in a single, privileged space.
+User Space vs. Kernel Space: Memory is separated to prevent user applications from crashing the entire system, increasing reliability.
+System Calls: When a program (e.g., a text editor) needs to interact with hardware (e.g., save a file), it issues a system call to the kernel, which then communicates with the hardware controller.
+Shell: A command-line interpreter that lets users interact with the OS by sending commands to the kernel.
+
