@@ -1,0 +1,38 @@
+Linux is an open-source operating system that manages computer hardware and software, just like Windows or macOS. It acts as a bridge between applications and the system’s hardware (CPU, memory, disk).
+
+Linux is a free, secure, and powerful operating system widely used in servers, cloud computing, and development environments.
+
+Key Features
+Open-source → Anyone can view and modify the code
+Secure → Strong permissions and user control
+Stable & reliable → Runs servers with minimal crashes
+Multi-user & multitasking → Multiple users/programs at once
+Customizable → Many versions (distributions)
+
+Popular Linux Distributions
+Ubuntu
+CentOS
+Red Hat Enterprise Linux
+
+Where is Linux Used?
+Web servers
+Cloud platforms (AWS, Azure)
+Mobile (Android is based on Linux)
+DevOps and container environments (Docker, Kubernetes)
+
+Interview:
+Linux is an open-source operating system that manages hardware and software resources, widely used for servers, cloud computing, and development due to its stability, security, and flexibility.
+
+Difference between Linux and Unix
+
+Linux → An open-source operating system inspired by Unix
+Unix → A proprietary (licensed) operating system originally developed in the 1970s (E.g. Mac OS)
+
+Feature	                            Linux	                      Unix
+Source Code	                        Open-source	                Mostly closed-source
+Cost	                              Free	                      Paid (licensed)
+Development	                        Community + companies	      Developed by vendors
+Flexibility	                        Highly customizable	        Less flexible
+Usage	                              Servers, cloud, DevOps	    Enterprise systems, legacy systems
+
+Linux is an open-source, Unix-like operating system that is free and widely used, while Unix is a proprietary system developed by vendors, typically used in enterprise environments.”
