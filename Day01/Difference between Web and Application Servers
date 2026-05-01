@@ -1,0 +1,44 @@
+A web server handles HTTP/HTTPS requests and serves static content like:
+
+HTML
+CSS
+Images
+
+It’s mainly responsible for delivering web pages
+
+Examples:
+Apache HTTP Server
+Nginx
+
+An application server handles business logic and generates dynamic content.
+
+It:
+
+Processes user input
+Interacts with databases
+Runs backend code (Java, Python, etc.)
+
+Examples:
+
+Apache Tomcat
+JBoss EAP
+
+Interview:
+A web server serves static content and handles HTTP requests, while an application server processes business logic, interacts with databases, and generates dynamic responses.
+
+Feature	                      Web Server	                  Application Server
+Purpose	                      Serve static content	        Handle business logic
+Content	                      Static (HTML, CSS)	          Dynamic (generated data)
+Processing	                  Minimal	                      Heavy processing
+Database Interaction	        No	                          Yes
+Role	                        Frontend delivery	             Backend processing
+
+How They Work Together
+
+In real-world systems:
+
+Client sends request
+Web server receives it
+If static → responds directly
+If dynamic → forwards to application server
+App server processes → sends response back
