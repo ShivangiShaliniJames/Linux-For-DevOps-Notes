@@ -1,0 +1,14 @@
+Linux → Open-source operating system, widely used in servers and development
+Windows → Proprietary operating system by Microsoft, widely used for personal and business desktops
+
+Feature	                  Linux	                      Windows
+Source Code	              Open-source	                Closed-source
+Cost	                    Free	                      Paid license
+Security	                More secure, fewer viruses	More vulnerable to malware
+Customization	            Highly customizable	        Limited customization
+Usage	                    Servers, DevOps, cloud	    Desktop, gaming, business apps
+Performance	              Lightweight, efficient	    More resource-heavy
+Software Support	        Limited commercial apps	    Wide commercial software support
+
+Interview:
+Linux is an open-source, highly customizable operating system mainly used in servers and development, while Windows is a user-friendly, commercial operating system widely used on desktops with strong software support.
