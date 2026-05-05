@@ -1,1 +1,7 @@
 You can install Ubuntu on Windows using WSL for a quick setup or use a bootable USB to dual boot for a full Linux experience.
+
+More ways:
+1. WSL
+2. Virtual Box
+3. AWS, Azure, GCP cloud VM
+4. Vagrant (like Virtual Box)
