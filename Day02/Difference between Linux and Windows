@@ -12,3 +12,29 @@ Software Support	        Limited commercial apps	    Wide commercial software su
 
 Interview:
 Linux is an open-source, highly customizable operating system mainly used in servers and development, while Windows is a user-friendly, commercial operating system widely used on desktops with strong software support.
+
+Difference between Unix and Linux
+
+Interview:
+Unix is a proprietary operating system developed by vendors, while Linux is an open-source, Unix-like system that is free, flexible, and widely used in modern computing.
+
+Unix → An original, proprietary operating system developed in the 1970s
+Linux → An open-source, Unix-like operating system built later and inspired by Unix
+
+Feature	                  Unix	                        Linux
+Origin	                  Developed by AT&T Bell Labs	  Created by Linus Torvalds
+Source Code	              Mostly closed-source	        Open-source
+Cost	                    Paid (licensed)	              Free (mostly)
+Development	              Vendor-specific	              Community + companies
+Flexibility	              Less customizable	            Highly customizable
+Usage	                    Enterprise/legacy systems	    Servers, cloud, DevOps
+
+Examples
+Unix Systems (Paid)
+AIX
+HP-UX
+Mac OS
+
+Linux Distributions (Free)
+Ubuntu
+Red Hat Enterprise Linux
