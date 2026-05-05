@@ -1,0 +1,23 @@
+top : CPU usage, Memory usage, Running processes (live), System load
+Key Fields:
+%CPU → CPU usage per process
+%MEM → Memory usage
+PID → Process ID
+load average → System load
+
+df -h: Total disk space, Used space, Available space
+E.g.
+Filesystem   Size  Used Avail Use%
+/dev/xvda1    20G   10G   10G  50%
+
+free -h: Total RAM, Used memory, Free memory
+E.g.
+Mem:   2.0G  1.2G  800M
+
+Command	                Checks	          Purpose
+top	                    CPU + processes	  Live system monitoring
+df -h	                  Disk	            Storage usage
+free -h	                RAM	              Memory usage
+
+Interview:
+top monitors CPU and running processes in real time, df -h checks disk space usage, and free -h shows memory (RAM) usage in a human-readable format.
