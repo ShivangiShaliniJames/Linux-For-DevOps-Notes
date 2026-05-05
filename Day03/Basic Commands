@@ -1,0 +1,136 @@
+
+Interview:
+Linux shell commands are used in the terminal to perform file operations, navigation, and system tasks efficiently using simple text-based instructions.
+
+Definitions:
+
+Terminal: A command-line interface used to interact with the Linux system.
+
+Directories usually appear in blue (or bold) while files appear in default color in terminal.
+
+Basic Commands:
+1)ls: Lists files and directories
+ls -l: Shows detailed info including file type, permissions, owner, size, and timestamp.
+E.g. 
+bash
+-rw-r--r-- 1 user user 123 file.txt
+Meaning:
+
+- → file
+rw- → owner permissions
+r-- → group
+r-- → others
+
+2)cd: Changes directory
+cd .. : Moves one directory up
+
+3)pwd: Shows current working directory
+
+4)mkdir: Creates a new directory
+
+5)Delete directory, files rm: Deletes a file, rm -r: Deletes a directory and its contents recursively , rmdir: Removes an empty directory
+
+6)cat: Displays file content, zcat: Displays content of compressed .gz files
+echo: Prints text to terminal 
+
+echo "Hello World" > file.txt (Writes text to a file (overwrites if exists))
+echo "Hello World" > newfile.txt (Creates new file and writes text)
+
+7)touch: Creates an empty file
+
+8)head: Shows first 10 lines of a file
+
+9)tail: Shows last 10 lines of a file, tail -f: Continuously displays new lines added to a file (live logs)
+
+10)less: Views file content page by page (scrollable), more: Views file content one screen at a time
+clear: Clears the terminal screen (Utility command)
+
+11) cp source destination
+
+mv source destination
+renaming also done using mv (e.g. mv devops/ linux_for_devops)
+
+wc filename.txt
+wc gives lines, words in number of files
+E.g $ wc file1.txt file2.txt file3.txt
+1 1 6 file1.txt (1 line, 1 word)
+1 2 12 file2.txt (1 line, 2 words)
+1 4 16 file3.txt (1 line 4 words)
+12) vi editor in Unix and Linux OS - Is an editor that opens an editor on the terminal. 
+After pressing I (insert mode), you can start typing. Once done, press Escape button, then :wq to save changes made in the vi or vim editor.
+
+13)ln (soft link, hard link)
+E.g. linux_for_devops/cloud$ echo "this is soft link" > devopsfile.txt
+linux_for_devops/cloud$ cat devopsfile.txt 
+this is soft link
+linux_for_devops/cloud$ pwd 
+/home/ubuntu/linux_for_devops/cloud
+linux_for_devops/cloud$ cd
+$ ln -s /home/ubuntu/linux_for_devops/cloud/devopsfile.txt softlink-file
+$ls (softlink is created in /home/ubuntu)
+softlink-file(in blue color) cloud demofile.txt linux_for_devops
+$ ls -ltr gives detailed description of all files including the softlink created. 
+Also if the original file is deleted, the softlink file will turn red in color.
+
+Hardlink is created by the command: 
+$ ln  /home/ubuntu/linux_for_devops/cloud/devopsfile.txt hardlink-file
+$ rm home/ubuntu/linux_for_devops/cloud/devopsfile.txt
+$ ls 
+hardlink-file(remains white all the time) cloud demofile.txt linux_for_devops
+Hardlink file will not turn red in color even if the source file is deleted.
+
+14)cut
+E.g. cut -b 1 myfile.txt (displays first byte in the file myfile.txt i.e. first letter)
+cut -b 1-4 myfile.txt (displays first four bytes in the file myfile.txt i.e. first four letters)
+
+tee - $ echo "hello" | tee hello.txt (displays and sends hello to hello.txt)
+$ hello
+
+sort - sorts the words in a file alphabetically
+
+15)clear - clears the screen
+diff - diff source file destination file - gives difference between source file and destination file
+diff gives difference between only 2 files
+
+Login related
+
+1)ssh - Secure shell
+(You can accesss another terminal throught ssh on port 22)
+
+ssh key gen runs while we generate a key-pair in AWS. The public key is created which stays with the instance and the private key gets downloaded.
+
+Once we create an instance on AWS, select that instance and click on connect. Now a window shows up where click on SSH connect. 
+Then follow the instructions. We ill connect this instance on our terminal(ssh terminal) by following the instructions. 
+So we connected the instance (created on AWS in the us-east or any region) remotely on our terminal.
+ls -a displays all hidden files/folders 
+Clicking q allows to quit
+
+2)Disk usage - 
+df: Shows disk space usage of all mounted filesystems
+df -h: Shows disk usage in human-readable format (GB/MB)
+du: Displays disk usage of files and directories
+du . : Shows disk usage of the current directory
+
+3) Process Management - ps, top, fuser, kill, nohup, 
+
+Interview: Commands like df and du monitor disk usage, top and ps track processes, free and vmstat show memory and system stats, 
+and kill, fuser, and nohup are used for process management.
+
+fuser: Identifies which process is using a file or port
+
+kill: Terminates a process using its PID
+
+free: Displays system memory (RAM) usage
+free -h - gives details on free memory
+
+nohup - Runs a process in the background that continues after logout
+$nohup free -h appends the output of free -h to a file nohup.out
+Now the command $ nohup df -h 
+Will append the output of df -h after the previously added content in nohup.out
+Check with the command $ cat nohup.out
+To display first 5 lines of nohup.out file, the command is
+$ head -n 5 nohup.out
+The last 5 lines will be displayed by the command
+$ tail -n 5 nohup.out
+
+vmstat
