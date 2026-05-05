@@ -1,0 +1,37 @@
+Interview:
+To create and connect to an EC2 instance, I launch an instance from the AWS console, configure security groups and key pairs, and then use SSH with the private key to securely connect to the instance.
+
+Step 1: Launch EC2 Instance in Amazon Web Services
+Steps:
+1a. Go to AWS Console → EC2
+1b. Click Launch Instance
+1c. Choose AMI (e.g., Ubuntu or Amazon Linux)
+1d. Choose instance type (t2.micro – free tier)
+1e. Create/select Key Pair (.pem file)
+1f. Configure Security Group:
+1g. Allow SSH (Port 22) from your IP
+1h. Click Launch
+
+Step 2: Prepare Key File (on your local machine)
+bash
+chmod 400 key.pem
+
+This secures your private key (required for SSH)
+
+Step 3: Connect to EC2 Instance (SSH)
+3a. Click on Connect
+3b. ssh -i mykey.pem ubuntu@3.250.xxx.xxx (to connect the instance on local machine)
+
+Step 4: Verify Connection
+Once connected, you’ll see:
+
+bash
+ubuntu@ip-xxx:~$
+
+Now you are inside your EC2 Linux server
+
+Tip:
+In real projects:
+
+Use SSH + automation scripts
+Or use AWS Systems Manager for secure access without opening port 22
