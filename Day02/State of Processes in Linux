@@ -1,0 +1,1 @@
+In Linux, processes move through states like running, sleeping, stopped, and zombie, depending on whether they are executing, waiting for resources, paused, or completed but not yet cleaned up.
