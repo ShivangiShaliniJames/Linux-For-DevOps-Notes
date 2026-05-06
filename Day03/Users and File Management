@@ -1,0 +1,122 @@
+System Level Commands
+
+1. uname: Displays which platform you are running (E.g. the instance connected through terminal will display Linux (as it was Unix we selected) 
+and our local terminal will display Darwin
+
+2. uptime displays since when is system active (in UTC time), then number of users active on the instance and load on it. 
+3. date - Displays date
+4. who - Displays user/s active on the system with details like log activity
+whoami displays only current active user (e.g. Ubuntu in our case)
+
+5. which displays which version of tech is installed
+E.g. $ which bash
+/usr/bin/bash (Our bash is in bin folder in user)
+
+6. id - Displays id of all the users, groups
+
+7. sudo (Root User is the Super user and the full form of sudo is SuperUserDO)
+The command $ cat /etc/passwd 
+displays the contents of the system file /etc/passwd
+
+What is /etc/passwd?
+A system file that stores user account information
+
+As a normal user, we can't get anything from the root folder as we are not permitted
+$ cd root
+
+8. shutdown will only be allowed if you are a super user.
+So the command $ sudo shutdown
+Then the instance will go down. Will be logged off, will come back to terminal. Go to AWS, select the instance and the start it. Maybe the ip changes so just do sudo ssh command, it will get connected.
+
+9. reboot: sudo reboot will reboot the instance
+
+10. apt (application package manager)Used to install tech 
+E.g. sudo apt-get install docker.io
+Only sudo apt install docker.io will not install as we need to get it from internet
+sudo apt-get update (first update the system), then install tech. Once installed, to check where is it installed
+$ which docker
+/user/bin/docker
+
+11. yum (package manager for centos) - A package manager for CentOS/RHEL used to install, update, and remove software packages with dependency management.
+12. dnf (package manager for Fedora) - The next-generation package manager for Fedora (and newer RHEL/CentOS) that improves performance and dependency resolution over yum.
+13. pacman (package manager for Arch) - The package manager for Arch Linux used to install, update, and manage packages from binary repositories.
+14. portage (package manager for ghentoo linux) - The source-based package management system for Gentoo Linux that builds software locally using customizable build scripts.
+15. rpm (package manager for ghentoo RedHat) - A low-level package management tool used to install, query, verify, and remove .rpm packages in Red Hat-based systems.
+
+Interview: Yum and dnf are package managers for Red Hat-based systems, pacman is used in Arch Linux, portage is a source-based manager in Gentoo, 
+and rpm is the underlying tool for handling .rpm packages.
+
+User and Group management commands
+1. sudo (Root User is the Super user and the full form of sudo is SuperUserDO)
+
+2. useradd is used to add user/s
+$ pwd response is /home/ubuntu (on ec2 instance)
+$sudo useradd -m xyz
+The user is added in /home directory. 
+
+3. whoami - whoami displays only current active user (e.g. Ubuntu in our case)
+4. su - Used to switch user (SwitchUser)
+ubuntu@ip-172-31-10-157/home$ su xyz
+$ Enter password
+$ (Ec2 does not display ubuntu@ip-172-31-10-157 for another user. It only displays the information for primary user ubuntu)
+$ whoami 
+$ xyz    #The new user
+$ls     #It will display xyz ubuntu
+$cd xyz
+$ pwd # This will display /home/xyz
+$ exit # Is used to come back to primary user ubuntu
+ubuntu@ip-172-31-10-157/home$ whoami   #will give ubuntu
+ubuntu@ip-172-31-10-157/home$ cat /etc/passwd    #This will show all the users with information like user id etc
+ubuntu@ip-172-31-10-157/home$ su xyz
+$ Enter password
+$id  #This will give the id of xyz
+
+5. passwd - Used to assign password to new user
+/home$ sudo passwd xyz
+
+6. userdel - Used to delete the user
+ubuntu@ip-172-31-10-157/home$ cd ubuntu
+ubuntu@ip-172-31-10-157/home/ubuntu$ sudo userdel xyz
+ubuntu@ip-172-31-10-157/home/ubuntu$ su xyz      #Verify with su switch user
+
+7. groupadd - This command is used to add a group to help add users in it.
+ubuntu@ip-172-31-10-157/home$ sudo useradd abc
+ubuntu@ip-172-31-10-157/home$ sudo useradd def
+ubuntu@ip-172-31-10-157/home$ sudo useradd ghi
+ubuntu@ip-172-31-10-157/home$ sudo groupadd devops
+ubuntu@ip-172-31-10-157/home$ sudo groupadd tester
+ubuntu@ip-172-31-10-157/home$ cat /etc/group      #This command is used to check group/s added
+
+
+8. gpasswd -a, -m
+ubuntu@ip-172-31-10-157/home$sudo gpasswd -a abc devops    #Adding abc to group devops
+ubuntu@ip-172-31-10-157/home$sudo gpasswd -a ubuntu devops      #Adding ubuntu to group devops
+To check if they are added in the group, 
+ubuntu@ip-172-31-10-157/home$ cat /etc/group
+
+To add multiple users in a group, use 
+ubuntu@ip-172-31-10-157/home$sudo gpasswd -M  def, ghi tester
+
+9. groupdel - Used to delete group
+ubuntu@ip-172-31-10-157/home/ubuntu$ sudo groupdel tester
+ubuntu@ip-172-31-10-157/home/ubuntu$ cat /etc/group        #Check if group is deleted
+
+
+File Permission commands
+1. Umask
+2. ls -l: Is used to check the file permissions associated with the file
+ubuntu@ip-172-31-10-157/home/ubuntu$ cd devops
+ubuntu@ip-172-31-10-157/home/ubuntu/devops$ls -l
+drwxrwxr-x: d is for directory, rwx permission for user, rwx permission for group, r-x permission for other user
+r- read, w - write, x - eXecute 
+3. chmod
+4. chown command
+5. chgrp command
+
+Compression commands
+1. Zip, gunzip, gzip
+2. tar, untar
+
+File Transfer commands
+1. SCP (Copy files)
+2. rsync command
