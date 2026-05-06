@@ -1,0 +1,77 @@
+1. ping: Is a command to check if there is data transfer/receive on an instance/server/website
+E.g. ubuntu@ip-172-$ping trainwithshubham.com
+This shows your internet is working and the website is up
+
+2. netstat (Network statistics) - Used to active internet connection
+$ sudo apt install net-tools
+$ netstat
+# Will give all network tcp related information
+
+3. ifconfig (interface configuration)
+Shows all networks like docker network, gives network interface card (nic)
+
+4. traceroute vs tracepath
+Traceroute and tracepath are network diagnostic tools used to trace the path packets take to a destination,
+with traceroute providing detailed hop information and tracepath offering a simpler view with MTU insights.
+
+$ sudo apt install traceroute
+$ traceroute youtube.com     #this will all the routes hopped to access the website youtube.com
+
+All the commands tell the latency (seconds taken for connection on the server)
+
+5. mtr (my trace route) - combines traceroute and path and gives shorter/brief information.
+
+6. nslookup - Gives server public (usually ipv4) and private ip(usually ipv6) address and the ip address you were trying to ping like trainwithshubham.com alongwith its ip address and also ip address for name.
+
+7. telnet - Does the samething, only difference you can provide port number as well. Helps connect to port
+E.g. telnet trainwithshubham.com 80
+443 is secure vs 80 is public
+
+8. hostname
+Gives the ip address 
+$cat /etc/hosts #will give all the host names
+
+9. ip
+$ ip address shows
+#This will all the ip addresses you have
+
+10. iwconfig - internet of wireless network config
+$ sudo apt install wireless tools.
+$ iwconfig      #will show all wireless attachments on this terminal/ec2 instance
+
+Check iwconfig on both local and remote (ec2 instance)terminal. 
+11. ss - A version of netstat
+
+12. arp (address resolution protocol) - The arp (Address Resolution Protocol) command is a networking tool used to display and modify 
+the ARP cache, which maps IP addresses to physical MAC addresses on a local network. It is used for troubleshooting network connectivity, 
+identifying connected devices, and managing static entries.
+
+
+13. dig command tells where the website is hosted.
+E.g. $ dig trainwithshubham.com
+
+14. nc (netcat)
+
+15. whois command gives domain name, registry name, registration date etc about a website bought.
+E.g. $ whois trainwithshubham.com, $ whois google.com (if required sudo apt install whois)
+
+Some more commands:
+1. route - Displays or modifies the system’s IP routing table (used to control network traffic paths).
+E.g. $ route
+Gives route table, also explore in AWS go to VPC and check route tables
+
+2. nmap - command is network map like route table.
+E.g. $ nmap -v trainwithshubham.com
+command is used if no port is closed/open for hacking
+
+3. wget - command downloads files from the internet via HTTP, HTTPS, or FTP from the command line.
+4. watch to see current or updating processes or anything. E.g. $ watch top
+5. iptable - 
+6. traceroute
+7. curl vs wget
+curl command is used to call api endpoints or get response from the server.
+E.g. $ curl GET https://dummy.restapi.example.com/api/v1/employees 
+E.g. $ curl GET https://dummy.restapi.example.com/api/v1/employees | jq    # to make the output look presentable
+
+wget - Downloads files from the internet via HTTP, HTTPS, or FTP from the command line.
+8. ifplugstatus command shows all interfaces in the working and not working condition.
