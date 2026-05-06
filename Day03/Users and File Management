@@ -103,20 +103,62 @@ ubuntu@ip-172-31-10-157/home/ubuntu$ cat /etc/group        #Check if group is de
 
 
 File Permission commands
-1. Umask
+1. Umask: umask is a shell command that reports or sets the mask value that limits the file permissions for newly created files in many Unix and Unix-like file systems by default.
+ubuntu@ip-172-31-10-157/home/ubuntu/devops$umask
+002
+
 2. ls -l: Is used to check the file permissions associated with the file
 ubuntu@ip-172-31-10-157/home/ubuntu$ cd devops
 ubuntu@ip-172-31-10-157/home/ubuntu/devops$ls -l
 drwxrwxr-x: d is for directory, rwx permission for user, rwx permission for group, r-x permission for other user
+-rw-rw-r--: It is a file, rw permission for user, rw permission for group and only read permission for another user (Permission is 664)
 r- read, w - write, x - eXecute 
-3. chmod
-4. chown command
-5. chgrp command
+
+3. chmod: This commands allows to change file permission for file/folder
+ubuntu@ip-172-31-10-157/home/ubuntu/devops$chmod 777 cloud
+ubuntu@ip-172-31-10-157/home/ubuntu/devops$ls -l      #will give
+drwxrwxrwx  cloud        #read, write and execute permission to all
+E.g. rwx to user only, no other permission to group and others - chmod 700 devopsfile.txt
+
+4. chown command is used to change ownership of file/folder
+ubuntu@ip-172-31-10-157/home/ubuntu/devops$ sudo chown abc demofile.txt
+ubuntu@ip-172-31-10-157/home/ubuntu/devops$ ls -l      #check ownership now
+5. chgrp command is used to change group ownership of file/folder
+ubuntu@ip-172-31-10-157/home/ubuntu/devops$ sudo chgrp abc demofile.txt
+drwxrwxrwx  abc abc demofile.txt      #Owner  Group owner 
 
 Compression commands
 1. Zip, gunzip, gzip
-2. tar, untar
+
+Zip: Compresses one or more files into a .zip archive.
+ubuntu@ip-172-31-10-157/home/ubuntu/devops$sudo apt install zip
+ubuntu@ip-172-31-10-157/home/ubuntu/devops$ zip -r lfd.zip linux_for_devops      #zip recursively
+ubuntu@ip-172-31-10-157/home/ubuntu/devops$ unzip lfd.zip
+
+gunzip: Decompresses a .gz file back to its original form.
+gzip: Compresses a file into .gz format to reduce its size.
+
+zip creates compressed archives, gzip compresses files into .gz format, and gunzip is used to decompress those files.
+2. tar - Archives multiple files/directories into a single .tar file (optionally with compression like .tar.gz).
+Check tar flags for more information. tar will zip/compress or unzip/extract
+
+ubuntu@ip-172-31-10-157/home/ubuntu/devops$ tar -cvzf cloud.tar.gz cloud    #c compression, v verbose, z gunzip, f filename
+ubuntu@ip-172-31-10-157/home/ubuntu/devops$ tar -xvzf cloud.tar.gz cloud    #x eXtract
+untar - Extracts files from a .tar (or compressed tar) archive. (Usually done using tar -x command)
 
 File Transfer commands
-1. SCP (Copy files)
-2. rsync command
+1. SCP (Secure Copy files)
+On local terminal, we want to transfer a file from local to ec2 instance
+% scp -i "/Users/shivangishalinijames/Downloads/learning-key.pem" filename.txt ubuntu@ec2-13-218-160-251.compute-1.amazonaws.com:/home/ubuntu
+
+# /Users/shivangishalinijames/Downloads/learning-key.pem is the private key path
+# filename.txt is the source in local terminal/system
+# ubuntu@ec2-13-218-160-251.compute-1.amazonaws.com:/home/ubuntu is the destination
+
+To securely copy a file from ec2 instance into local system
+% scp -i "/Users/shivangishalinijames/Downloads/learning-key.pem" -r ubuntu@ec2-13-218-160-251.compute-1.amazonaws.com:/home/ubuntu/linux_for_devops .
+# Copies recursively (as it is a folder) in the current directory
+% ls       # check the current directory
+
+2. rsync command (remote sync)
+linux_for_devops%  rsync -e "ssh -i /Users/shivangishalinijames/Downloads/learning-key.pem" avz linux_for_devops ubuntu@ec2-13-218-160-251.compute-1.amazonaws.com:/home/ubuntu/linux_for_devops
