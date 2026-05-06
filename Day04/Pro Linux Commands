@@ -1,0 +1,41 @@
+Interview: grep is used for searching text, sed for editing and transforming text, and awk for advanced text processing and data extraction.
+
+1. AWK - A powerful text-processing tool used for pattern scanning, data extraction, and reporting. AWK works on formatted data (table etc)
+Works on structured data column wise
+E.g.$ mkdir day05
+$ vim app.log     #Enter all the logs/data taken from internet 
+$ head -n 2 app.log    #Extracts 2 lines from the app.log file
+$ awk '{print $1}' app.log    #only prints 1st column
+$ awk '{print $1, $2}' app.log    # prints 1st and 2nd column
+$ awk '/INFO/ {print $1, $2, $3, $5}' app.log    #Prints 1st, 2nd, 3rd and 5th column where INFO is written (in 3rd column)) Filters the output with INFO keyword in any of these columns.
+$ awk '/INFO/ {print $1, $2, $3, $5}' app.log > only_info.log    #will add all the info containing information in the only_info.log file.
+$ cat only_info.log    #check only_info.log file
+
+E.g $ awk '/INFO/ {count++}' app.log    #counts info but does not print anything
+E.g $ awk '/INFO/ {count++} END {print count}' app.log      #prints the number of info in the app.log file
+
+To print the second column and in a range
+$ awk '{$2} app.log
+$ awk '$2 >= "08:53:00" && $2 <= "08:53:59" {print $2, $3, $4}' app.log
+
+$ awk head app.log    #prints first 10 lines
+$awk 'NR >= 2 && NR <= 10 {print}' app.log        #prints content from line 2 to 10
+$awk 'NR >= 2 && NR <= 10 {print NR}' app.log    #prints 2 to 10
+
+2. SED - A stream editor used to find, replace, and transform text in files or input streams. (Works line by line), works on unstructured data
+$ sed -n '/INFO/p' app.log                  #will extract only info information (where info is in the column)
+$ sed 's/INFO/LOG/g' app.log                 #will replace info by log (scans line by line), g means set global
+$ sed -n -e '/INFO/=' app.log               #will print line number where info appeared
+$ sed -n -e '/INFO/ -e'/INFO/p' app.log     #will print line number where INFO appeared and also the line
+$ sed '1,10 s/INFO/LOG/g' app.log           # prints lines 1 to 10 replacing info with log
+$ sed '1,15 s/INFO/LOG/g; 1,10p; 11q' app.log # prints 1 to 10 lines and quit on 11th line   
+
+3. GREP - Searches for specific patterns or text in files and displays matching lines.
+E.g. $ grep INFO app.log                  #prints all the info lines 
+E.g. $ grep -i info app.log                 # prints info (even if it uppercase, -i means case insensitive i.e. search lines with INFO, Info, info or any which case sensitiveness
+     $ grep -i -c info app.log        #prints 16 which is number of times info appears irrespective of case Output is 16
+     $ awk '/INFO/ {count++} END {print count}' app.log      #same output 16
+
+E.g. $ ps aux       #prints all processes
+     $ ps aux | grep ubuntu      #prints only ubuntu processes
+     $ ps aux | grep ubuntu } | awk '{print $2}'        #prints only second column of all the ubuntu processes
