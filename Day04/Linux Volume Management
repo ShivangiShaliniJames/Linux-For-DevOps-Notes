@@ -1,0 +1,201 @@
+1. Introduction to Linux Volumes and AWS EBS
+
+Interview: Linux volumes are storage units mounted to directories for data management, while AWS EBS is a persistent block storage
+service that provides virtual disks for EC2 instances.
+
+What are Linux Volumes?
+
+A volume in Linux is a storage unit or partition where files and data are stored.
+Volumes can be:
+
+Physical disks (/dev/xvda)
+Partitions (/dev/xvda1)
+Logical volumes (LVM)
+
+They are mounted to directories like:
+
+Bash
+/mnt
+/data
+/home
+
+Common Linux Volume Concepts
+Term	              Meaning
+Disk	              Physical storage device
+Partition	          Divided section of a disk
+File System	        Structure used to store files (ext4, xfs)
+Mount Point	        Directory where volume is attached
+
+Useful Linux Volume Commands
+Bash
+a. lsblk: Shows attached disks and partitions
+b. df -h: Shows mounted storage usage
+c. mount: Displays mounted volumes
+
+
+2. Physical Vs Logical Volume vs Volume groups in Linux
+
+Interview: In Linux LVM, a Physical Volume is the actual disk or partition, a Volume Group is a storage pool created from physical volumes,
+and a Logical Volume is a virtual partition created from the volume group for user data.
+
+In order to check the logical volume in linux, in ec2 instance switch user as root user and run commands.
+
+E.g. ubuntu@ip-172-31-87-248:~$ sudo su
+root@ip-172-31-87-248:/#lvm
+lvm>pvcreate /dev/xvdf /dev/xvdg /dev/xvdh      #mounting logical volumes xvdf, xvdg and xvdh as logical volumes
+lvm>pvs      #to check them if created
+lvm> vgcreate tws_vg /dev/xvdf /dev/xvdg      #tws volume group
+lvm>vgs        # to check volume group created (10gb+12gb=22gb or 21.9gb)
+lvm>lvcreate -L 10G -n tws_lv tws_vg
+lvm>pvdisplay      #displays physical volumes
+lvm>vgdisplay      #displays volume groups
+lvm>lvdisplay      #displays logical volumes
+lvm>exit
+
+root@ip-172-31-87-248:/#lvs
+root@ip-172-31-87-248:/#mkdir /mnt/tws_lv_mount
+root@ip-172-31-87-248:/#mkfs.ext4 /dev/tws_vg/tws_lv      #formats
+root@ip-172-31-87-248:/#mount /dev/tws_vg/tws_lv /mnt/tws_lv_mount
+root@ip-172-31-87-248:/#lsblk
+root@ip-172-31-87-248:/#df -h
+root@ip-172-31-87-248:/#cd /mnt/tws_lv_mount
+root@ip-172-31-87-248/mnt/tws_lv_mount:#mkdir devops
+root@ip-172-31-87-248/mnt/tws_lv_mount:#ls
+devops   lost+found
+root@ip-172-31-87-248/mnt/tws_lv_mount:#cd devops
+root@ip-172-31-87-248/mnt/tws_lv_mount/devops:#vim hi.txt
+write something
+root@ip-172-31-87-248/mnt/tws_lv_mount/devops:#cd
+root@ip-172-31-87-248~:# cat /mnt/tws_lv_mount/devops/hi.txt
+hello world        #displays the text      #this shows now we can access the content from anywhere
+
+root@ip-172-31-87-248~:# umount mnt/tws_lv_mount      #unmounts the logical volume
+After this can't access the hi.txt file, but re mount
+root@ip-172-31-87-248~:# mount mnt/tws_lv_mount
+
+1. Physical Volume (PV)
+
+A Physical Volume is the actual physical storage device or partition used by LVM.
+
+👉 Examples:
+
+Hard disk
+SSD
+Disk partition
+
+Example device:
+
+/dev/xvdf
+/dev/sdb1
+📦 2. Volume Group (VG)
+
+A Volume Group is a pool of storage created by combining one or more Physical Volumes.
+
+👉 Think of it as:
+
+“A storage container made from multiple disks.”
+
+Example:
+
+vg_data
+📂 3. Logical Volume (LV)
+
+A Logical Volume is a virtual partition created from a Volume Group.
+
+👉 This is what users actually use and mount.
+
+Example:
+
+/dev/vg_data/lv_backup
+
+Real-world Analogy
+LVM Component	            Analogy
+Physical Volume	          Individual bricks
+Volume Group	            Entire storage warehouse
+Logical Volume	          Rooms created inside warehouse
+
+Useful Commands
+A. Create Physical Volume
+pvcreate /dev/sdb
+
+B. Create Volume Group
+vgcreate vg_data /dev/sdb
+
+C. Create Logical Volume
+lvcreate -L 5G -n lv_backup vg_data      #create logical volume of size 5GB lv_backup from volume group vg_data
+
+✅ Advantages of LVM
+Easy resizing of storage
+Flexible disk management
+Combine multiple disks
+Snapshots and backups
+
+3. Mounting Volumes in Linux
+
+root@ip-172-31-87-248~:#mkdir tws_disk_mount
+root@ip-172-31-87-248~:#cd /mnt/
+root@ip-172-31-87-248/mnt:#ls
+tws_disk_mount   tws_lv_mount
+
+root@ip-172-31-87-248/mnt:#mkfs -t ext4 /dev/xvdh    #make format 3rd physical volume
+root@ip-172-31-87-248/mnt:#cd
+root@ip-172-31-87-248~:#mount /dev/xvdh /mnt/tws_disk_mount
+root@ip-172-31-87-248~:#df -h      #check if it is mounted
+
+Resizing the logical volume
+
+root@ip-172-31-87-248~:#lvm
+lvm>lvextend +5G /dev/tws_vg/tws_lv    #will resize from 10Gb to 15Gb
+lvm>exit
+root@ip-172-31-87-248~:#df -h          #check the volume storage using this command
+root@ip-172-31-87-248~:#lsblk          # and this command
+
+
+4. Managing AWS EBS on EC2 instances
+
+What is AWS EBS?
+📦 EBS = Elastic Block Store
+
+Amazon Web Services EBS is a block storage service used with EC2 instances.
+
+Think of it as a virtual hard disk attached to an EC2 server.
+
+Features of EBS
+Persistent storage (data remains after reboot)
+Can attach/detach volumes
+Supports backups using snapshots
+Different volume types (gp3, io1, st1)
+
+How EBS Works with EC2
+1. Create EC2 instance
+2. Attach EBS volume
+3. Linux detects volume (lsblk)
+4. Format volume
+5. Mount volume to a directory
+
+Basic EBS Setup Commands (Linux)
+1️⃣ Check attached volume
+lsblk
+
+2️⃣ Format volume
+sudo mkfs -t ext4 /dev/xvdf      #naming always starts with xvdf, cvdg etc. xvd(a-e) is not used by users
+
+3️⃣ Create mount directory
+sudo mkdir /data
+
+4️⃣ Mount volume
+sudo mount /dev/xvdf /data
+
+5️⃣ Verify
+df -h
+
+🎯 Real DevOps Use Cases
+Store application data
+Database storage
+Persistent storage for servers
+Backup and disaster recovery
+
+5. Introduction to LVM (Logical Volume Manager)
+(Check commands with lvm>)
+Using LVM with EBS for Dynamic Storage Management (Notes)
+
